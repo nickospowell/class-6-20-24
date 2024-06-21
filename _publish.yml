@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: ff98aa8b-be8b-4319-b975-9498d4b3181d
+      url: 'https://nosp41.quarto.pub/chicago-data'

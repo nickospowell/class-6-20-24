@@ -1,0 +1,34 @@
+---
+title: "Chicago School Data"
+execute: 
+  echo: false
+---
+
+```{r}
+#| message: false
+#| label: setup
+
+library(tidyverse)
+library(tidycensus)
+x <- read_csv("test_nwea.csv")
+```
+
+```{r}
+#| label: graph
+#| warnings: false
+
+x <- read_csv("test_nwea.csv") %>%
+  rename('Population' = '# Students',
+         'Score' = 'Average RIT Score',
+         'Above' = '% At/Above National Average Performance',
+         'Year' = '...6')
+x <- as.data.frame(x)
+
+ggplot(x, aes(x = Year, y = Score, color = Subject)) +
+  geom_line() +
+  facet_wrap(~ Grade, scales = "free_y") +
+  labs(title = "Score Over Years by Grade and Subject", 
+       x = "Year", 
+       y = "Score")
+```
+
